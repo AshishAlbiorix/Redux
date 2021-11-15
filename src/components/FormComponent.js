@@ -9,14 +9,12 @@ function FormComponent() {
     const dispatch = useDispatch();
     const handler = () => {
         let dataArray = [{
-                firstName:firstName
-              },{
-                lastName:lastName 
+                firstName:firstName,lastName:lastName 
               }];
         dispatch(formData(dataArray))
       };
   return (
-    <div className="form-block">
+    <div className="container form-block">
       <input
         type="text"
         className="form-control"

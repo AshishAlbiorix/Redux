@@ -1,17 +1,19 @@
 import { useSelector } from "react-redux"
+import { useLinkClickHandler } from "react-router-dom";
 function GetReduceData(){
     const myState = useSelector((state)=>state.formReducer);
     return (
-        <div>
+        <>
+            <ul>
             {
               myState.map((item,index)=>
-              <div key={index}>
-                <h1>{item.firstName}</h1>
-                <h2>{item.lastName}</h2>
-                </div>
-              )  
-            }
-        </div>
+                <li key={index}>
+                  {item.firstName} { item.lastName }
+                </li>
+                )  
+              }
+            </ul>
+        </>
     )
 }
 export default  GetReduceData;

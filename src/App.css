@@ -53,3 +53,6 @@ input.quantity_input {
   align-items: center;
   margin-top: 40px;
 }
+.container.form-block {
+  margin-top: 50px;
+}
