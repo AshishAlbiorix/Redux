@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
       
-      <FormComponent/>
       <GetReduceData/>
+      <FormComponent/>
       <div className="container">
         <h1>Increment/Decrement Counter</h1>
         <h4>Using React Js Redux</h4>
