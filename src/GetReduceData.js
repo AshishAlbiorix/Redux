@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
-import { useLinkClickHandler } from "react-router-dom";
 function GetReduceData() {
-  const myState = useSelector((state) => state.formReducer);
+  const formData = useSelector((state) => state.formReducer);
+  const counterData = useSelector((state) => state.changeTheNumber);
   return (
     <>
+    <h1>{counterData}</h1>
       <table>
+      <thead>
         <tr>
         <td>NO#</td>
         <td>First Name</td>
@@ -13,7 +15,9 @@ function GetReduceData() {
         <td>Gender</td>
         <td>Language</td>
         </tr>
-        {myState.map((item, index) => (
+        </thead>
+        <tbody>
+        {formData.map((item, index) => (
           <tr key={index}>
             <td>{index+1}</td>
             <td>{item.firstName}</td>
@@ -23,6 +27,7 @@ function GetReduceData() {
             <td>{item.language}</td>
           </tr>
         ))}
+        </tbody>
       </table>
     </>
   );
