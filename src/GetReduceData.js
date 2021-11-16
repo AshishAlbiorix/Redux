@@ -27,12 +27,11 @@ function GetReduceData() {
             <td>{item.country}</td>
             <td>{item.gender}</td>
             <td>{
-              
-
               item.language.map((lang,indexLang)=>{
                 return (
                   <label key={indexLang}>
                     {lang}
+                    { item.language[item.language.length - 1] == lang ? "" : ","}
                   </label>
                 )
               }
