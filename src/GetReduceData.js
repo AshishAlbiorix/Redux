@@ -16,12 +16,14 @@ function GetReduceData() {
         <td><strong>User Name</strong></td>
         <td><strong>Email</strong></td>
         <td><strong>Address</strong></td>
+        <td><strong>Language</strong></td>
+        <td><strong>Gender</strong></td>
+        <td><strong>Image</strong></td>
         </tr>
         </thead>
         <tbody>
         {
           formData.map((item,index)=>{
-            console.log(item.address);
             return (
               <tr key={index}>
                 <td>
@@ -31,29 +33,20 @@ function GetReduceData() {
                   {item.name}
                 </td>
                 <td>
-                  {item.username}
+                  {item.last_name}
                 </td>
                 <td>{item.email}</td>
-                 <td>
-                   <ul>
-                     <li>
-                        {
-                        item.address.street
-                        },
-                     </li>
-                     <li>
-                      {item.address.suite},
-                     </li>
-                     <li>
-                      {item.address.city},
-                     </li>
-                     <li>
-                     {item.address.zipcode},
-                     </li>
-                     <li>
-                     Lat{ item.address.geo.lat } Log{item.address.geo.lng}
-                     </li>
-                     </ul>
+                 <td>                   
+                  { item.mobile }
+                 </td>
+                 <td>                   
+                  { item.language }
+                 </td>
+                 <td>                   
+                  { item.gender }
+                 </td>
+                 <td>                   
+                  <img src={item.store_path+item.file} width="100" />
                  </td>
               </tr>
             )

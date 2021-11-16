@@ -23,14 +23,13 @@ function FormComponent() {
     };
     
     useEffect(()=>{
-      axios.get('https://jsonplaceholder.typicode.com/users').then((response)=>{
-        dispatch(formData(response.data))
+      axios.get('http://127.0.0.1:8000/api/student').then((response)=>{
+        dispatch(formData(response.data.data))
       });
     },[])
     
     const handler = () => {
         let dataArray = [{firstName:firstName,lastName:lastName,country:country,gender:gender,language:language}];
-        //dispatch(formData(dataArray))
       };
   return (
     <div className="container form-block">
