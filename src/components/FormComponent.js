@@ -1,9 +1,11 @@
 import {useDispatch } from "react-redux"
 import { formData } from "../actions/Index";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
 function FormComponent() {
+  const dispatch = useDispatch();
     const [firstName,setFirstName] = useState();
     const [lastName,setLastName] = useState();
     const [country,setCountry] = useState();
@@ -19,10 +21,16 @@ function FormComponent() {
       }
       setLanguage(tempLangugae);
     };
-    const dispatch = useDispatch();
+    
+    useEffect(()=>{
+      axios.get('https://jsonplaceholder.typicode.com/users').then((response)=>{
+        dispatch(formData(response.data))
+      });
+    },[])
+    
     const handler = () => {
         let dataArray = [{firstName:firstName,lastName:lastName,country:country,gender:gender,language:language}];
-        dispatch(formData(dataArray))
+        //dispatch(formData(dataArray))
       };
   return (
     <div className="container form-block">

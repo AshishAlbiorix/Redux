@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 function GetReduceData() {
   const formData = useSelector((state) => state.formReducer);
   const counterData = useSelector((state) => state.changeTheNumber);
@@ -7,37 +8,57 @@ function GetReduceData() {
   return (
     <div className="container">
     <h1>{counterData}</h1>
-      <table>
+      <table className="table table-hover">
       <thead>
         <tr>
-        <td>NO#</td>
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Country</td>
-        <td>Gender</td>
-        <td>Language</td>
+        <td><strong>NO#</strong></td>
+        <td><strong>Name</strong></td>
+        <td><strong>User Name</strong></td>
+        <td><strong>Email</strong></td>
+        <td><strong>Address</strong></td>
         </tr>
         </thead>
         <tbody>
-        {formData.map((item, index) => (
-          <tr key={index}>
-            <td>{index+1}</td>
-            <td>{item.firstName}</td>
-            <td>{item.lastName}</td>
-            <td>{item.country}</td>
-            <td>{item.gender}</td>
-            <td>{
-              item.language.map((lang,indexLang)=>{
-                return (
-                  <label key={indexLang}>
-                    {lang}
-                    { item.language[item.language.length - 1] == lang ? "" : ","}
-                  </label>
-                )
-              }
-            )}</td>
-          </tr>
-        ))}
+        {
+          formData.map((item,index)=>{
+            console.log(item.address);
+            return (
+              <tr key={index}>
+                <td>
+                  {index+1}
+                </td>
+                <td>
+                  {item.name}
+                </td>
+                <td>
+                  {item.username}
+                </td>
+                <td>{item.email}</td>
+                 <td>
+                   <ul>
+                     <li>
+                        {
+                        item.address.street
+                        },
+                     </li>
+                     <li>
+                      {item.address.suite},
+                     </li>
+                     <li>
+                      {item.address.city},
+                     </li>
+                     <li>
+                     {item.address.zipcode},
+                     </li>
+                     <li>
+                     Lat{ item.address.geo.lat } Log{item.address.geo.lng}
+                     </li>
+                     </ul>
+                 </td>
+              </tr>
+            )
+          })
+        }
         </tbody>
       </table>
     </div>
